@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Add To Do{% endblock %}
+
+{% block content %}
+
+    {% load crispy_forms_tags %}
+<h3 class='text-center text-info p-2 mt-3 mb-3'>Add Your Task</h3>
+<div style="width:75%; margin:auto;">
+  <form method="post">
+    {% csrf_token %}
+    {{todoform|crispy}}
+    <input class="btn btn-primary" type="submit" value="Submit">
+  </form>
+</div>
+  
+{% endblock %}

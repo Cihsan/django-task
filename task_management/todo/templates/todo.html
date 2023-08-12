@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Task Management{% endblock %}
+
+{% block content %}
+<h3 class='text-center text-white p-2 mt-3 mb-3 bg-primary'>Tasks</h3>
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th class='bg-light' scope="col">Title</th>
+        <th class='bg-light' scope="col">Description</th>
+        <th class='bg-light' scope="col">Status</th>
+        <th class='bg-light' scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in task %}
+      <tr>
+        <td>{{todo.title}}</td>
+        <td>{{todo.description}}</td>
+        {%if todo.status %}
+            <td>Completed</td>
+        {%else%}
+            <td>Incomplete</td>
+        {% endif %}
+        <td class='d-flex justify-content-evenly'>
+          <a  class="btn btn-danger btn-sm" href="{% url 'delete_todo' todo.id %}">Delete</a>
+          <a  class="btn btn-info btn-sm" href="{% url 'edit_todo' todo.id %}">Edit</a>
+          <a  class="btn btn-success btn-sm" href="{% url 'done_todo' todo.id %}">Complete</a>
+        
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
