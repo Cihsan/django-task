@@ -1,5 +1,3 @@
-# django-task
-
 # Django 'To-Do List' project
 
 ### Model Making:
